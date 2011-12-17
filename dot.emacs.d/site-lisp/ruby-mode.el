@@ -451,7 +451,7 @@ The variable ruby-indent-level controls the amount of indentation.
 	 (t
 	  (setq in-string (point))
 	  (goto-char end))))
-       ((looking-at "/=") 
+       ((looking-at "/=")
 	(goto-char pnt))
        ((looking-at "/")
 	(cond
@@ -643,7 +643,7 @@ The variable ruby-indent-level controls the amount of indentation.
 	  (nth 2 state)			; depth
 	  (car (car (nth 3 state))))))	; pcol
 					;(car (nth 5 state))		; indent
-	  
+
 
 (defun ruby-indent-size (pos nest)
   ;; TODO: doc
@@ -1050,7 +1050,7 @@ balanced expression is found."
 	       (concat "^[ \t]*\\(def\\|class\\|module\\)[ \t]+"
 		       "\\("
 		       ;; \\. and :: for class method
-		       "\\([A-Za-z_]" ruby-symbol-re "*\\|\\.\\|::" "\\)" 
+		       "\\([A-Za-z_]" ruby-symbol-re "*\\|\\.\\|::" "\\)"
 		       "+\\)")
 	       nil t)
 	      (progn

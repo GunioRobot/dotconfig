@@ -40,7 +40,7 @@ DEPSRCS=	bbdb-com.el  bbdb-hooks.el  bbdb-gnus.el  bbdb-mhe.el \
 		bbdb-merge.el bbdb-migrate.el bbdb-gui.el
 
 ifeq ($(EMACS_FLAVOR),xemacs)
-DEPSRCS+=	bbdb-xemacs.el 
+DEPSRCS+=	bbdb-xemacs.el
 endif
 
 DEPBINS=	${DEPSRCS:.el=.elc}

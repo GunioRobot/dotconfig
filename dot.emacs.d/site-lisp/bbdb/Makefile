@@ -11,14 +11,14 @@ LN_S = ln -s
 EMACS_PROG = /Applications/Emacs.app/Contents/MacOS/Emacs -no-site-file -no-init-file
 EMACS_FLAVOR = emacs
 
-GNUSDIR = 
-MHEDIR = 
-VMDIR = 
-OTHERDIRS = 
+GNUSDIR =
+MHEDIR =
+VMDIR =
+OTHERDIRS =
 
 PACKAGEDIR = /Users/pergesu/myconfig/dot.emacs.d/site-lisp/bbdb
 SYMLINKS = no
-LINKPATH = 
+LINKPATH =
 
 # this is lovely, isn't it?  Surprisingly enough, it seems to work...
 VM	= -eval '(if (> (length "$(VMDIR)") 0) \
@@ -40,7 +40,7 @@ DEPSRCS=	bbdb-com.el  bbdb-hooks.el  bbdb-gnus.el  bbdb-mhe.el \
 		bbdb-merge.el bbdb-migrate.el bbdb-gui.el
 
 ifeq ($(EMACS_FLAVOR),xemacs)
-DEPSRCS+=	bbdb-xemacs.el 
+DEPSRCS+=	bbdb-xemacs.el
 endif
 
 DEPBINS=	${DEPSRCS:.el=.elc}

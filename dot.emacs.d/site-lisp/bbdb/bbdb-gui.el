@@ -26,7 +26,7 @@
 (require 'bbdb)
 (require 'bbdb-com)
 
-(eval-and-compile 
+(eval-and-compile
   (if (featurep 'xemacs)
       (require 'overlay)))
 

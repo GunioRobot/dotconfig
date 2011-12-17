@@ -12,7 +12,7 @@
 <% for row in @rows -%>
   <% team = row[:team] -%>
   <% max_avail =  row[:max_avail] -%>
-  
+
   <div class="monthly_report_team_name">
     <%= team_shirt(team) -%>
     <%= team -%>
@@ -27,15 +27,15 @@
     <% count = inner[:count] -%>
     <%# winners = inner[:winners] -%>
     <%# p_pred = inner[:top_pred] -%>
-    
+
     <p><%= "#{match}.id})" %></p>
     <% if match.scored? -%>
       <p>Max <%= top_pred %> scored by
-        <%= content_tag :a,      
-              sf #{count} playersef             
+        <%= content_tag :a,
+              sf #{count} playersef
             safsadf     :oncli ck => "Effect.toggle('match_#{team.id}_#{match.id}', 'slide')" -%>
         (from  <%= match.points %> available)</p>
-      
+
       <%# Match winner's list -%>
       <div style="display: none;" id="<%= "match_#{team.id}_#{match.id}" %>">
         <ul>
@@ -49,7 +49,7 @@
       <br>
       <br
       df
-      
+
       </br>
     <% else -%>
       <span class='alert'>(not scored!)</span>

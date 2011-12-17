@@ -1,5 +1,5 @@
 ;;; bbdb-vcard-import.el -- import vCards into BBDB
-;; 
+;;
 ;; Copyright (c) 2008 Marcus Crestani
 ;;
 ;; bbdb-vcard-import.el is free software you can redistribute it and/or
@@ -51,7 +51,7 @@
 ;;
 ;; 2008-01-31  Marcus Crestani  <crestani@informatik.uni-tuebingen.de>
 ;;   - Do not enforce (type . "internet") for email addresses.
-;; 
+;;
 ;; 2008-01-03  Marcus Crestani  <crestani@informatik.uni-tuebingen.de>
 ;;   - Initial version.
 ;;
@@ -74,7 +74,7 @@
   "Return the values of an RECORD's FIELD; empty string entries are filtered out."
   (let ((values (vcard-values record (list field))))
     (if values
-	(mapconcat 'identity 
+	(mapconcat 'identity
 		   (bbdb-vcard-filter-empty-values (car values))
 		   ", ")
       "")))
@@ -83,8 +83,8 @@
   "Return a list of email addresses."
   (let ((pref (vcard-ref record '("email" ("type" . "pref"))))
 	(rest (vcard-ref record '("email") '(("type" . "pref")))))
-    (mapcar (lambda (entry) (car (cdr entry))) 
-	    (if pref 
+    (mapcar (lambda (entry) (car (cdr entry)))
+	    (if pref
 		(cons (car pref) rest)
 	      rest))))
 
@@ -153,7 +153,7 @@
 	 ;; `bbdb-default-label-list'.  Also, some phone number
 	 ;; conversion may break the format of numbers.
 	 (new-record (bbdb-vcard-merge-interactively name company net nil nil notes)))
-    (setq bbdb-vcard-merged-records (append bbdb-vcard-merged-records 
+    (setq bbdb-vcard-merged-records (append bbdb-vcard-merged-records
 					    (list new-record)))))
 
 (defun bbdb-vcard-snarf-region (begin end)

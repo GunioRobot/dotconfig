@@ -26,7 +26,7 @@
 ;; where the ability to jump to errors in source code is desirable.
 ;;
 ;; The functions you will probably want to use are
-;; 
+;;
 ;; ruby-run-w/compilation
 ;; ruby-rake-w/compilation
 ;;

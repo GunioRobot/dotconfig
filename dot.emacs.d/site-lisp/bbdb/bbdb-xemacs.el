@@ -23,7 +23,7 @@
 ;;; various fields when it fills in that buffer (doing that would be slow and
 ;;; cons a lot, so it doesn't seem to be worth it.)
 
-(eval-and-compile 
+(eval-and-compile
   (if (not (featurep 'xemacs))
       (error "This file only works in XEmacs.")))
 

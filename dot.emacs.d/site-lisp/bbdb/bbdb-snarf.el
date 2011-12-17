@@ -205,7 +205,7 @@ more details."
       (while (and (not (eobp)) (/= (char-syntax (char-after (point))) ?w))
         (forward-line 1))
       (if (re-search-forward "\\(\\sw\\|[ -\.,]\\)*\\sw" nil t)
-          (progn 
+          (progn
             (setq name (match-string 0))
             (delete-region (match-beginning 0) (match-end 0))))
 
@@ -285,7 +285,7 @@ more details."
       (setq name (or name
                      (and nets (car (car (bbdb-rfc822-addresses (car nets)))))
                      "?"))
-      
+
       (bbdb-merge-interactively name
                                 nil
                                 nets

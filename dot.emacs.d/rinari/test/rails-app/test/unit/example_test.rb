@@ -6,5 +6,5 @@ class ExampleTest < ActiveSupport::TestCase
   def test_to_s
     assert true
   end
-  
+
 end

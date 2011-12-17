@@ -122,7 +122,7 @@
             (pnav-do-filtering (cdr filters-list) filtered-list)
           filtered-list)))
 
-  
+
 (global-set-key (kbd "M-t") 'pnav-find-files-in-project)
 
 (defadvice ido-name (after only-return-file-name)

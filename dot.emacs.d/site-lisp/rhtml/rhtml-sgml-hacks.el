@@ -121,7 +121,7 @@
 ;;   "Restore hacked functions."
 ;;   (rhtml-restore-functions rhtml-hack-backup-prop))
 
-  
+
 
 ;; PST - handling of `erb-*'
 (defun sgml-get-context (&optional until)
@@ -272,7 +272,7 @@ LCON is the lexical context, if any."
 
     ;; We don't know how to indent it.  Let's be honest about it.
     (cdata nil)
-    
+
     ;; PST - Indent Ruby inside ERB tags
     ((erb-open erb-close erb-middle erb-data)
      (let ((indent-pos (point)))

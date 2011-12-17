@@ -365,7 +365,7 @@ When nil, you will be asked."
 (defun bbdb-primep (num)
   "Return t if NUM is a prime number."
   (if (fboundp 'primep)
-      (primep num) 
+      (primep num)
     (and (numberp num) (> num 1) (= num (floor num))
          (let ((lim (sqrt num)) (nu 2) (prime t))
            (while (and prime (<= nu lim))
@@ -548,7 +548,7 @@ newer than the file is was read from, and will offer to revert."
 RMAIL, Gnus or a composition buffer.
 
 If 'horizontal, stack the window horizontally and give it the number of lines
-specified by `bbdb-pop-up-target-lines'.  
+specified by `bbdb-pop-up-target-lines'.
 If 'vertical, stack the window vertically and give it the number of rows
 specified by `bbdb-pop-up-target-columns'."
   :group 'bbdb-record-display
@@ -587,7 +587,7 @@ first address in the list of addresses for a given user).  If it is
 (defcustom bbdb-completion-display-record t
   "*Whether `bbdb-complete-name' (\\<mail-mode-map>\\[bbdb-complete-name]
 in mail-mode) will update the *BBDB* buffer to display the record whose email
-address has just been inserted."  
+address has just been inserted."
   :group 'bbdb-record-use
   :type '(choice (const :tag "Update the BBDB buffer" t)
                  (const :tag "Don't update the BBDB buffer" nil)))
@@ -1882,12 +1882,12 @@ multi-line layout."
         (temp-buffer-show-function nil)
         (first (car (car records))))
 
-    ;; just quiet a warning about unused vars 
+    ;; just quiet a warning about unused vars
     (and temp-buffer-setup-hook temp-buffer-show-function)
 
     (bbdb-pop-up-bbdb-buffer)
 
-    (save-excursion 
+    (save-excursion
       (set-buffer bbdb-buffer-name)
       (let ((inhibit-read-only t)) (erase-buffer))
 
@@ -3227,7 +3227,7 @@ NAME is converted to lower case and in a MULE enabled Emacs it is converted to
 UTF-8 or unibyte to unify the overlapping ISO-8859-* encodings.
 
 You may advice this function to allow more sophisticated normalizations."
-  (when name 
+  (when name
     (setq name (downcase name))
     (cond ((functionp 'encode-coding-string)
 	   (funcall 'encode-coding-string name 'utf-8))
@@ -3239,7 +3239,7 @@ You may advice this function to allow more sophisticated normalizations."
 (defun bbdb-name= (a b)
   "Return t if the two names A and B are equal.
 Before comparing A and B they are normalized by calling the function
-`bbdb-name-normalize'."   
+`bbdb-name-normalize'."
   (string= (bbdb-name-normalize a) (bbdb-name-normalize b)))
 
 
@@ -3343,7 +3343,7 @@ before the record is created, otherwise it is created without confirmation
                                     (and (setq tmp
                                                (bbdb-record-lastname record))
                                          (downcase tmp)))))))
-            
+
             ;; have a message-name, not the same as old name.
             (cond (bbdb-readonly-p nil);; skip if readonly
 
@@ -3599,26 +3599,26 @@ not clutter the buffer-list."
 
     ;; now get the pop-up
     (if (or (not bbdb-use-pop-up) (get-buffer-window new-bbdb-buffer-name))
-        ;; just create the buffer if necessary 
+        ;; just create the buffer if necessary
         (progn
           (get-buffer-create new-bbdb-buffer-name)
           (display-buffer new-bbdb-buffer-name))
-      
+
       ;; else find a window to split
-      (when predicate 
+      (when predicate
         (setq window current-window)
         (while (and (not (funcall predicate window))
                     (not (eq current-window
                              (setq window (next-window window)))))))
-      
-      ;; find the tallest window if none has been selected so far 
+
+      ;; find the tallest window if none has been selected so far
       (when (null window)
         (let ((tallest-window current-window))
           (while (not (eq current-window (setq window (next-window window))))
             (if (> (window-height window) (window-height tallest-window))
                 (setq tallest-window window)))
           (setq window tallest-window)))
-      
+
       ;; select it and split it...
       (select-window window)
       (cond ((eq bbdb-use-pop-up 'vertical)
@@ -3636,13 +3636,13 @@ not clutter the buffer-list."
       (if (memq major-mode
                 '(gnus-Group-mode gnus-Subject-mode gnus-Article-mode))
           (goto-char (point-min)))
-      
-      ;; goto the next window, the one created by the split and 
+
+      ;; goto the next window, the one created by the split and
       ;; make it display the BBDB buffer
       (select-window (next-window))
       (let ((pop-up-windows nil))
         (switch-to-buffer (get-buffer-create new-bbdb-buffer-name)))
-    
+
       ;; select the original window we were in
       (select-window current-window)
       ;; and make sure the original buffer is selected

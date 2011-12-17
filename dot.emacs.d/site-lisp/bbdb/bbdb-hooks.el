@@ -44,7 +44,7 @@
     (error nil))
   (condition-case()
       (progn
-        (require 'vm)        
+        (require 'vm)
 	(require 'vm-version)
         (require 'bbdb-vm))
     (error nil))

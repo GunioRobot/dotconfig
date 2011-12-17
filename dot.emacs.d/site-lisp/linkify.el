@@ -1,8 +1,8 @@
 ;;; linkify.el --- Create clickable links to lines in files.
 ;; Copyring (C) 2008 Tom Wright
 
-;;Author: Tom Wright <tom.wright@tat.wright.name> 
-;; If you've tried out this package - I'd quite like to hear what you think - feel 
+;;Author: Tom Wright <tom.wright@tat.wright.name>
+;; If you've tried out this package - I'd quite like to hear what you think - feel
 ;; free to email me.
 
 ;; linkify.el is free software. You can distribute under the MIT license.
@@ -11,8 +11,8 @@
 ;;; Commentary
 
 ;; linkify.el provides a set of functions for semi-automatically creating links
-;; lines in files based on the text entered into a buffer, or received from 
-;; a process. Its original intended use was to add links to exceptions in test output, 
+;; lines in files based on the text entered into a buffer, or received from
+;; a process. Its original intended use was to add links to exceptions in test output,
 ;; thereby allowing one to avoid parsing filenames and line numbers by hand.
 
 ;; Three following variables and functions may be of interest:
@@ -29,7 +29,7 @@
 ;; set-process-filter then this will add clickable linkts to lines which match
 ;; one of the regexps in linkify-regexps. (See start-process)
 
-;; linkify.el has only been tested on emacs22. 
+;; linkify.el has only been tested on emacs22.
 
 ;;; Installation:
 ;; ensure that linkify.el is in your emacs lisp path (see the load-path variable)
@@ -38,7 +38,7 @@
 ;;; Use:
 
 ;; To linkfy the output from a process:
-;; After creating the process (start-process) set linkify-regexps in the processes output buffer and 
+;; After creating the process (start-process) set linkify-regexps in the processes output buffer and
 ;; call (set-process-filter proc 'linkify-filter) - where proc is the value returned by start-process or similar.
 
 
@@ -97,7 +97,7 @@
 
 (defun linkify-follow (button)
   "Follow a link."
-  (let ((button-text (buffer-substring 
+  (let ((button-text (buffer-substring
 		      (button-start button) (button-end button)))
 	filename
 	line-number
@@ -105,7 +105,7 @@
     (select-window (get-buffer-window  click-buffer) t)
     (setq filename (linkify-get-filename button-text))
     (setq line-number (linkify-get-line button-text))
-    
+
     (find-file-other-window filename)
     (if line-number
 	(progn
@@ -160,7 +160,7 @@ so create a button in the output buffer linking to this file"
 (defun linkify-line ()
   (interactive)
   "Add links to the current line"
-  (let ((bol (progn (beginning-of-line) (point))) 
+  (let ((bol (progn (beginning-of-line) (point)))
 	(eol (progn (end-of-line) (point)))
 	line)
     (setq line (buffer-substring bol eol))
@@ -171,10 +171,10 @@ so create a button in the output buffer linking to this file"
 (defun linkify-buffer (buffer)
   "Linkify the current buffer."
   (interactive (list (current-buffer)))
-  (save-excursion 
+  (save-excursion
     (set-buffer buffer)
     (linkify-apply-to-lines 'linkify-line)))
-  
+
 
 (provide 'linkify)
 

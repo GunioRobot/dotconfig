@@ -357,7 +357,7 @@
   "Make anchor reference to work."
   (goto-char (point-min))
   (let (matched-text refid)
-    (while (re-search-forward 
+    (while (re-search-forward
 	    "<\\(?:sup\\|cite\\) id=\"\\([^\"]*\\)\"" nil t)
       (setq matched-text (match-string 0)
 	    refid        (match-string 1))

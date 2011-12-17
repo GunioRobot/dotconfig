@@ -33,7 +33,7 @@
   (require 'vm-vars)
   (require 'vm-folder)
   (require 'vm-mime))
-  
+
 (defun bbdb/vm-get-header-content (header-field msg)
   (let ((content (vm-get-header-contents msg (concat header-field ":"))))
     (if content
@@ -298,7 +298,7 @@ e.g. define you own function `my-folder-name' and set it to
                      (if (bbdb-record-getprop r bbdb/vm-set-auto-folder-alist-field)
                          r))
                    (bbdb-records))))
-    
+
     (while headers
       (setq header (car headers) headers (cdr headers))
       ;; create the folder-list in vm-auto-folder-alist if it doesn't exist
@@ -308,7 +308,7 @@ e.g. define you own function `my-folder-name' and set it to
                                          vm-auto-folder-alist)
               folder-list (assoc header vm-auto-folder-alist)))
       (mapcar
-       (lambda (r) 
+       (lambda (r)
          (setq notes-field (bbdb-record-raw-notes r))
          (when (and (listp notes-field)
                     (setq folder (cdr (assq bbdb/vm-set-auto-folder-alist-field

@@ -42,7 +42,7 @@ would point the buffers at dir2/foo and dir2/bar"
 	       f new-file-name))))
     (switch-to-buffer current-buffer-name)))
 
-  
+
 (defun find-buffer-for (filename)
   "Finds the open buffer pointed at filename"
   (detect (buffer-list)

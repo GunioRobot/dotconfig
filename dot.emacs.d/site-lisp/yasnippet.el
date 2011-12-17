@@ -1,7 +1,7 @@
 ;;; yasnippet.el --- Yet another snippet extension for Emacs.
 
 ;; Copyright 2008 pluskid
-;; 
+;;
 ;; Author: pluskid <pluskid@gmail.com>
 ;; Version: 0.5.4
 ;; X-URL: http://code.google.com/p/yasnippet/
@@ -50,7 +50,7 @@ foo-bar
 will first try \"bar\", if not found, then \"foo-bar\" is tried.")
 
 (defvar yas/root-directory nil
-  "The (list of) root directory that stores the snippets for each 
+  "The (list of) root directory that stores the snippets for each
 major modes.")
 
 (defvar yas/indent-line t
@@ -115,7 +115,7 @@ doesn't call `after-change-major-mode-hook' need to be hooked explicitly.")
 (defvar yas/after-exit-snippet-hook
   '()
   "Hooks to run after a snippet exited.
-The hooks will be run in an environment where some variables bound to 
+The hooks will be run in an environment where some variables bound to
 proper values:
  * yas/snippet-beg : The beginning of the region of the snippet.
  * yas/snippet-end : Similar to beg.")
@@ -124,7 +124,7 @@ proper values:
   '()
   "Hooks to run after a before expanding a snippet.")
 
-(defvar yas/buffer-local-condition 
+(defvar yas/buffer-local-condition
   '(if (and (not (bobp))
 	    (or (equal "font-lock-comment-face"
 		       (get-char-property (1- (point))
@@ -169,7 +169,7 @@ Here's an example:
 
 (defvar yas/fallback-behavior 'call-other-command
   "The fall back behavior of YASnippet when it can't find a snippet
-to expand. 
+to expand.
 
  * 'call-other-command means try to temporarily disable
     YASnippet and call other command bound to `yas/trigger-key'.
@@ -284,7 +284,7 @@ You can customize the key through `yas/trigger-key'."
   (next nil)
   (prev nil)
   snippet)
-(defstruct (yas/field 
+(defstruct (yas/field
 	    (:constructor yas/make-field (overlay number value transform)))
   "A field in a snippet."
   overlay
@@ -327,7 +327,7 @@ You can customize the key through `yas/trigger-key'."
   (yas/field-number
    (yas/group-primary-field group)))
 (defun yas/group-add-field (group field)
-  "Add a field to the field group. If the value of the primary 
+  "Add a field to the field group. If the value of the primary
 field is nil and that of the field is not nil, the field is set
 as the primary field of the group."
   (push field (yas/group-fields group))
@@ -373,7 +373,7 @@ have, compare through the start point of the overlay."
 			  (if yas/require-template-condition
 			      nil
 			    t)
-			(let ((result 
+			(let ((result
 			       (yas/template-condition-predicate condition)))
 			  (if yas/require-template-condition
 			      (if (eq yas/require-template-condition t)
@@ -431,7 +431,7 @@ a list of modes like this to help the judgement."
 	(save-restriction
 	  (save-match-data
 	    (format "%s" (eval (read string))))))
-    (error (format "(error in elisp evaluation: %s)" 
+    (error (format "(error in elisp evaluation: %s)"
 		   (error-message-string err)))))
 (defun yas/calculate-field-value (field value)
   "Calculate the value of the field. If there's a transform
@@ -513,7 +513,7 @@ the template of a snippet in the current snippet-table."
 				(overlay-start field-overlay)
 				(point))
 		(delete-char original-length)))))))))
-  
+
 (defun yas/overlay-modification-hook (overlay after? beg end &optional length)
   "Modification hook for snippet field overlay."
   (when (and after? (not undo-in-progress))
@@ -558,7 +558,7 @@ event manually."
 			   (group (car groups) (car groups)))
 			 ((or (null groups)
 			      done))
-		       (setq field-overlay (yas/field-overlay 
+		       (setq field-overlay (yas/field-overlay
 					    (yas/group-primary-field group)))
 		       (when (and (= (overlay-start field-overlay)
 				     (overlay-end field-overlay))
@@ -674,16 +674,16 @@ will be deleted before inserting template."
 				     nil
 				     nil
 				     t)))
-	  (overlay-put overlay 
+	  (overlay-put overlay
 		       'modification-hooks
 		       yas/keymap-overlay-modification-hooks)
-	  (overlay-put overlay 
+	  (overlay-put overlay
 		       'insert-behind-hooks
 		       yas/keymap-overlay-modification-hooks)
 	  (overlay-put overlay 'keymap yas/keymap)
 	  (overlay-put overlay 'yas/snippet-reference snippet)
 	  (setf (yas/snippet-overlay snippet) overlay))
-	
+
 	;; Step 8: Replace fields with default values
 	(dolist (group (yas/snippet-groups snippet))
 	  (let ((value (yas/group-value group)))
@@ -714,7 +714,7 @@ will be deleted before inserting template."
 	    (dolist (field (yas/group-fields group))
 	      (unless (equal overlay (yas/field-overlay field))
 		(overlay-put (yas/field-overlay field)
-			     'face 
+			     'face
 			     'yas/mirror-highlight-face)))))
 
 	;; Step 11: move to end and make sure exit-marker exist
@@ -741,7 +741,7 @@ will be deleted before inserting template."
 	(let ((groups (yas/snippet-groups snippet))
 	      (exit-marker (yas/snippet-exit-marker snippet)))
 	  (if groups
-	      (goto-char (overlay-start 
+	      (goto-char (overlay-start
 			  (yas/field-overlay
 			   (yas/group-primary-field
 			    (car groups)))))
@@ -785,7 +785,7 @@ will be deleted before inserting template."
     (if (null overlay1)
 	overlay2
       (if (or (null overlay2)
-	      (eq (overlay-get overlay1 'yas/snippet) 
+	      (eq (overlay-get overlay1 'yas/snippet)
 		  (overlay-get overlay2 'yas/snippet)))
 	  overlay1
 	(if (> (yas/snippet-id (overlay-get overlay2 'yas/snippet))
@@ -824,8 +824,8 @@ Here's a list of currently recognized variables:
   (goto-char (point-min))
   (let (template name bound condition)
     (if (re-search-forward "^# --\n" nil t)
-	(progn (setq template 
-		     (buffer-substring-no-properties (point) 
+	(progn (setq template
+		     (buffer-substring-no-properties (point)
 						     (point-max)))
 	       (setq bound (point))
 	       (goto-char (point-min))
@@ -854,7 +854,7 @@ Here's a list of currently recognized variables:
   (lexical-let ((template template))
     (lambda ()
       (interactive)
-      (yas/expand-snippet (point) 
+      (yas/expand-snippet (point)
 			  (point)
 			  template))))
 
@@ -869,7 +869,7 @@ Here's a list of currently recognized variables:
 
 (defun yas/fake-keymap-for-popup (templates)
   "Create a fake keymap for popup menu usage."
-  (cons 'keymap 
+  (cons 'keymap
 	(mapcar (lambda (pair)
 		  (let* ((template (cdr pair))
 			 (name (yas/template-name template))
@@ -888,7 +888,7 @@ t is returned simply."
 		    (+ (cdr x-y) 20))
 	      (selected-window)))
     t))
- 
+
 (defun yas/x-popup-menu-for-template (templates)
   "Show a popup menu listing templates to let the user select one."
   (car (x-popup-menu (yas/point-to-coord)
@@ -897,7 +897,7 @@ t is returned simply."
   "Can't display popup menu in text mode. Just select the first one."
   (yas/template-content (cdar templates)))
 (defun yas/dropdown-list-popup-for-template (templates)
-  "Use dropdown-list.el to popup for templates. Better than the 
+  "Use dropdown-list.el to popup for templates. Better than the
 default \"select first\" behavior of `yas/text-popup-for-template'.
 You can also use this in window-system.
 
@@ -919,7 +919,7 @@ NOTE: You need to download and install dropdown-list.el to use this."
     (funcall yas/text-popup-function templates)))
 
 (defun yas/load-directory-1 (directory &optional parent)
-  "Really do the job of loading snippets from a directory 
+  "Really do the job of loading snippets from a directory
 hierarchy."
   (let ((mode-sym (intern (file-name-nondirectory directory)))
 	(snippets nil))
@@ -979,14 +979,14 @@ all the parameters:
       (insert ";;;;      Auto-generated code         ;;;;\n")
       (insert ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n")
       (insert code "\n")
-      (flet ((yas/define-snippets 
+      (flet ((yas/define-snippets
 	      (mode snippets &optional parent)
 	      (with-current-buffer bundle-buffer
 		(insert ";;; snippets for " (symbol-name mode) "\n")
 		(insert "(yas/define-snippets '" (symbol-name mode) "\n")
 		(insert "'(\n")
 		(dolist (snippet snippets)
-		  (insert "  (" 
+		  (insert "  ("
 			  (yas/quote-string (car snippet))
 			  " "
 			  (yas/quote-string (cadr snippet))
@@ -1058,7 +1058,7 @@ content of the file is the template."
   (add-hook 'yas/minor-mode-on-hook
 	    'yas/ensure-minor-mode-priority)
   (when yas/use-menu
-    (define-key-after 
+    (define-key-after
       (lookup-key global-map [menu-bar])
       [yasnippet]
       (cons "YASnippet" yas/menu-keymap)
@@ -1129,7 +1129,7 @@ condition to a snippet, then it will only be expanded
 when the condition evaluated to non-nil."
   (yas/define-snippets mode
 		       (list (list key template name condition))))
-    
+
 
 (defun yas/hippie-try-expand (first-time?)
   "Integrate with hippie expand. Just put this function in
@@ -1151,7 +1151,7 @@ when the condition evaluated to non-nil."
   (let ((local-condition (yas/template-condition-predicate
 			  yas/buffer-local-condition)))
     (if local-condition
-	(let ((yas/require-template-condition 
+	(let ((yas/require-template-condition
 	       (if (and (consp local-condition)
 			(eq 'require-snippet-condition (car local-condition))
 			(symbolp (cdr local-condition)))
@@ -1172,7 +1172,7 @@ when the condition evaluated to non-nil."
 		       (command (key-binding yas/trigger-key)))
 		  (when (commandp command)
 		    (call-interactively command))))))))))
-      
+
 (defun yas/next-field-group ()
   "Navigate to next field group. If there's none, exit the snippet."
   (interactive)
@@ -1186,7 +1186,7 @@ when the condition evaluated to non-nil."
 		  (group (car groups) (car groups)))
 		((or (null groups)
 		     done)
-		 (unless done 
+		 (unless done
 		   (let* ((overlay (yas/snippet-overlay snippet))
 			  (keymap (overlay-get overlay 'keymap))
 			  (command nil))
@@ -1250,7 +1250,7 @@ when the condition evaluated to non-nil."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defadvice c-neutralize-syntax-in-CPP
   (around yas-mp/c-neutralize-syntax-in-CPP activate)
-  "Adviced `c-neutralize-syntax-in-CPP' to properly 
+  "Adviced `c-neutralize-syntax-in-CPP' to properly
 handle the end-of-buffer error fired in it by calling
 `forward-char' at the end of buffer."
   (condition-case err
@@ -1273,7 +1273,7 @@ handle the end-of-buffer error fired in it by calling
 ;; Maintainer:
 ;; Copyright (C) 2008 Jaeyoun Chung
 ;; Created: Sun Mar 16 11:20:45 2008 (Pacific Daylight Time)
-;; Version: 
+;; Version:
 ;; Last-Updated: Sun Mar 16 12:19:49 2008 (Pacific Daylight Time)
 ;;           By: dradams
 ;;     Update #: 43

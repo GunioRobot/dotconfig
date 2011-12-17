@@ -19,13 +19,13 @@ if [ -z "$NO_COLORS" ]; then
 	end="%{$reset_color%}"
 
 	unset host_color path_color
-else 
+else
 	host="$SHORT_HOST"
 	cpath="%20<..<%~"
 	end=
 fi
 
-PS1="[$host:${cpath}$end] "		
+PS1="[$host:${cpath}$end] "
 fi
 
 

@@ -72,7 +72,7 @@ Files to save text are stored in the directory specified by the
 		 (const :tag "No expire" nil)))
 
 (defcustom w3m-form-textarea-file-coding-system
-  (cond ((or (featurep 'un-define) 
+  (cond ((or (featurep 'un-define)
 	     (fboundp 'utf-translate-cjk-mode))
 	 'utf-8)
 	((equal "Japanese" w3m-language)
@@ -1813,7 +1813,7 @@ textarea")))
 		 ;; we use the `post' method according to the proposal
 		 ;; of RFC2070.
 		 (eq 'multipart/form-data (w3m-form-enctype form)))
-	     (if download 
+	     (if download
 		 (funcall 'w3m-download
 			  url nil nil nil
 			  (w3m-form-make-form-data form))
@@ -1824,12 +1824,12 @@ textarea")))
 			(w3m-form-make-form-data form)
 			w3m-current-url)))
 	    ((eq 'get (w3m-form-method form))
-	     (funcall (if download 
+	     (funcall (if download
 			  'w3m-download
 			(if new-session
 			    'w3m-goto-url-new-session
 			  'w3m-goto-url))
-		      (concat (w3m-url-strip-query url) 
+		      (concat (w3m-url-strip-query url)
 			      "?" (w3m-form-make-form-data form))))
 	    (t
 	     (w3m-message "This form's method has not been supported: %s"

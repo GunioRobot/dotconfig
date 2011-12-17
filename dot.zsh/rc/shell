@@ -1,4 +1,4 @@
-limit core 0								# no core file 
+limit core 0								# no core file
 
 #
 # Key binging

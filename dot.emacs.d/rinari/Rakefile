@@ -4,7 +4,7 @@ DOCDIR = "#{MYDIR}/doc"
 TESTDIR = "#{MYDIR}/test"
 
 namespace "test" do
-  
+
   desc "Run tests using `emacs-snapshot'"
   task :snapshot do
     system "emacs-snapshot -Q -l #{TESTDIR}/init.el"
@@ -14,12 +14,12 @@ namespace "test" do
   task :twenty_two do
     system "emacs22 -Q -l #{TESTDIR}/init.el"
   end
-  
+
   desc "Run tests using `emacs'"
   task :emacs do
     system "emacs -Q -l #{TESTDIR}/init.el"
   end
-  
+
 end
 
 namespace "doc" do
@@ -33,12 +33,12 @@ namespace "doc" do
   task :make_info do
     system "makeinfo #{DOCDIR}/rinari.texi"
   end
-  
+
   desc "Install info documentation"
   task :install_info => :make_info do
     system "sudo install-info #{DOCDIR}/rinari.info"
   end
-  
+
   desc "Remove compiled documentation"
   task :clean do
     system "rm -rf #{DOCDIR}/rinari" if FileTest.exists? "#{DOCDIR}/rinari"

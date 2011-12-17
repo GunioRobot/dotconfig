@@ -505,9 +505,9 @@ renders and redirects to find the final controller or view."
   "Key map for Rinari minor mode.")
 
 (defun rinari-bind-key-to-func (key func)
-  (eval `(define-key rinari-minor-mode-map 
+  (eval `(define-key rinari-minor-mode-map
 	   ,(format "\C-c;%s" key) ,func))
-  (eval `(define-key rinari-minor-mode-map 
+  (eval `(define-key rinari-minor-mode-map
 	   ,(format "\C-c'%s" key) ,func)))
 
 (defvar rinari-minor-mode-keybindings

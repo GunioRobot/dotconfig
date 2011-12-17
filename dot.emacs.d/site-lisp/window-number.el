@@ -108,10 +108,10 @@ minibuffer (even if not active) last."
   "Keymap for the window number meta mode.")
 
 (defmacro window-number-define-keys (mode-map prefix)
-  `(progn 
+  `(progn
      ,@(loop for number from 1 to 10 collect
-             `(define-key ,mode-map 
-                (kbd ,(concat prefix (number-to-string 
+             `(define-key ,mode-map
+                (kbd ,(concat prefix (number-to-string
                                       (if (>= number 10) 0 number))))
                 (lambda nil (interactive)
                   (window-number-select ,number))))))

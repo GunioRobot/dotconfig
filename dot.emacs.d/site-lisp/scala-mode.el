@@ -49,7 +49,7 @@
     (map-char-table
      (lambda (c v)
        (when v
-        (if (listp c) (setq start (car c) end (cdr c)) 
+        (if (listp c) (setq start (car c) end (cdr c))
           (if (= (1- c) end) (setq end c)
             (if (> end (+ start 2))
                 (setq charset (format "%s%c-%c" charset start end))

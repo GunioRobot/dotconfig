@@ -1,5 +1,5 @@
 # -*- mode: org -*-
-# 
+#
 #+TITLE:     TODO
 #+SEQ_TODO:  TODO WAITING | DONE CANCELLED MAYBE PARTIAL
 #+DRAWERS:   SNIP
@@ -106,7 +106,7 @@ SyntaxError: /home/eschulte/united/org/work/arf/arf/lib/cluster.rb:35: syntax er
 :END:
 
 * MAYBE ruby-compilation enhancement
-  
+
 found a line which didn't match the error-regexp-alist
 
 :SNIP:
